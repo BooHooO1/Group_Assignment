@@ -51,6 +51,8 @@ clinic_summary["mortality_rate"] = (
     clinic_summary["total_deaths"] / clinic_summary["total_births"]
 )
 
+st.subheader("Clinic 1 vs Clinic 2: How Deadly Were They?")
+
 bar_chart = (
     alt.Chart(clinic_summary)
     .mark_bar()
@@ -59,7 +61,7 @@ bar_chart = (
         y=alt.Y("mortality_rate:Q", title="Average mortality rate (deaths / births)"),
         tooltip=["clinic", "total_births", "total_deaths", "mortality_rate"]
     )
-    .properties(title="Clinic 1 vs Clinic 2: How Deadly Were They?")
+    .properties(height=400)  # optional, gives it some breathing room
 )
 
 st.altair_chart(bar_chart, use_container_width=True)
