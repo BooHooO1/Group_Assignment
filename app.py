@@ -52,11 +52,6 @@ filtered = df[(df["year"] >= year_range[0]) & (df["year"] <= year_range[1])]
 st.subheader(f"Yearly Data for Selected Range: {year_range[0]}–{year_range[1]}")
 st.dataframe(filtered)
 
-# Focus only on the years 1841–1846 (before handwashing)
-pre_handwashing = df[(df["year"] >= 1841) & (df["year"] <= 1846)]
-
-st.subheader("Raw Data: 1841–1846 (Before Handwashing)")
-st.dataframe(pre_handwashing)
 
 # ---------- BAR CHART: MORTALITY RATE BY CLINIC ----------
 st.subheader("Average Mortality Rate by Clinic (1841–1846)")
