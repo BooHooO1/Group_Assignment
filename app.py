@@ -29,6 +29,29 @@ df = df.rename(columns={
 # Calculate mortality rate
 df["mortality_rate"] = df["deaths"] / df["births"]
 
+# Calculate mortality rate
+df["mortality_rate"] = df["deaths"] / df["births"]
+
+# ---------- YEAR SLIDER FILTER ----------
+# find min and max years from the data
+min_year = int(df["year"].min())
+max_year = int(df["year"].max())
+
+# slider lets user choose any range between min and max
+year_range = st.slider(
+    "Select year range:",
+    min_value=min_year,
+    max_value=max_year,
+    value=(1841, 1846)  # default range you used before
+)
+
+# filter dataframe based on slider selection
+filtered = df[(df["year"] >= year_range[0]) & (df["year"] <= year_range[1])]
+
+# show filtered raw data
+st.subheader(f"Yearly Data for Selected Range: {year_range[0]}–{year_range[1]}")
+st.dataframe(filtered)
+
 # Focus only on the years 1841–1846 (before handwashing)
 pre_handwashing = df[(df["year"] >= 1841) & (df["year"] <= 1846)]
 
@@ -83,3 +106,18 @@ line_chart = (
 )
 
 st.altair_chart(line_chart, use_container_width=True)
+
+# ---------- EXPLANATION / FINDINGS ----------
+st.markdown(
+    """
+### What do we learn from this?
+
+- From **1841–1846**, **Clinic 1** has a **higher average mortality rate** than **Clinic 2**.
+- This is striking because both clinics served similar patients, but **Clinic 1** had doctors
+  who often moved from autopsies straight to deliveries **without washing their hands**.
+- These patterns helped Semmelweis realize that **hand hygiene** was strongly connected to
+  **whether mothers survived or died** after childbirth.
+"""
+)
+
+# Optional: show team names at the bottom
