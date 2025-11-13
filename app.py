@@ -16,7 +16,7 @@ dangerous unsanitary medical routines were for mothers.
 )
 
 # ---------- LOAD & PREP DATA ----------
-df = pd.read_csv("yearly_deaths_by_clinic-1.csv")
+df = pd.read_csv("yearly_deaths_by_clinic.csv")
 
 # Rename columns to simpler lowercase names
 df = df.rename(columns={
