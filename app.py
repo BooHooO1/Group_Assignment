@@ -61,10 +61,14 @@ bar_chart = (
         y=alt.Y("mortality_rate:Q", title="Average mortality rate (deaths / births)"),
         tooltip=["clinic", "total_births", "total_deaths", "mortality_rate"]
     )
-    .properties(height=200)  # optional, gives it some breathing room
+    .properties(height=400)  # optional, gives it some breathing room
 )
 
 st.altair_chart(bar_chart, use_container_width=True)
+st.markdown(
+    "<h3 style='font-size:20px; font-weight:600;'>Clinic 1 vs Clinic 2: How Deadly Were They?</h3>",
+    unsafe_allow_html=True
+)
 
 # ---------- LINE CHART: DEATHS OVER TIME ----------
 st.subheader("Deaths Over Time (1841–1846)")
