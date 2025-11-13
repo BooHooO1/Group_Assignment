@@ -60,7 +60,6 @@ bar_chart = (
         x=alt.X("clinic:N", title="Clinic"),
         y=alt.Y("mortality_rate:Q", title="Average mortality rate (deaths / births)"),
         tooltip=["clinic", "total_births", "total_deaths", "mortality_rate"]
-        <h3 style='font-size:20px
     )
     .properties(height=400)  # optional, gives it some breathing room
 )
